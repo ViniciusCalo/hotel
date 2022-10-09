@@ -1,0 +1,71 @@
+<html>
+
+<head>
+
+	<script>
+		//DEFININDO O NOME DO HOTEL
+		const hotelName = prompt("Olá! Qual o nome do Hotel? ");
+		alert(`O nome do hotel é  ${hotelName}. Seja bem-vindo!!`); 4
+		const username = prompt("Digite seu nome: ");
+		const password = parseInt(prompt(`Olá ${username} ! Digite sua senha`));
+		const passwordValidator = 2678;
+		const option = parseInt(prompt("Escolha uma opção: 1- Reservar Quarto | 2- Cadastrar Hospede | 3- Abastecer carros | 4- sair"));
+
+		 if (password === passwordValidator) {
+			inicio();
+		} else {
+			alert("wrong way dude!");
+		}
+
+		function inicio() {
+			switch(option){
+				case 1:
+					reserva_quartos();
+				case 2 :
+					cadastro_hospedes();
+				case 3:
+					abastecer_carros();
+				case 4:
+					sair();
+			}
+		}
+
+		function reserva_quartos() {
+			alert('HOTEL {NOME DO HOTEL} - RESERVA DE QUARTOS');
+			inicio();
+		}
+
+		function cadastro_hospedes() {
+			alert('HOTEL {NOME DO HOTEL} - CADASTRO DE HÓSPEDES');
+			inicio();
+		}
+
+		function abastecer_carros() {
+			alert('HOTEL {NOME DO HOTEL} - ABASTECER');
+			inicio();
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 4');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
