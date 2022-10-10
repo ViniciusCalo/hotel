@@ -3,25 +3,37 @@
 <head>
 
 	<script>
-		//DEFININDO O NOME DO HOTEL
-		const hotelName = prompt("Olá! Qual o nome do Hotel? ");
-		alert(`O nome do hotel é  ${hotelName}. Seja bem-vindo!!`); 4
-		const username = prompt("Digite seu nome: ");
-		const password = parseInt(prompt(`Olá ${username} ! Digite sua senha`));
-		const passwordValidator = 2678;
-		const option = parseInt(prompt("Escolha uma opção: 1- Reservar Quarto | 2- Cadastrar Hospede | 3- Abastecer carros | 4- sair"));
 
-		 if (password === passwordValidator) {
-			inicio();
-		} else {
-			alert("wrong way dude!");
+		hotelName = "";
+		username = "";
+		//DEFININDO O NOME DO HOTEL
+		welcome()
+		function welcome() {
+			hotelName = prompt("Digite o nome do Hotel?!");
+
+			alert(`O nome do Hotel é ${hotelName}`);
+			login();
+		}
+
+		function login() {
+			username = prompt("Digite seu nome: ");
+			password = parseFloat(prompt(`Seja bem-vindo ${username}!! Digite a sua senha.`));
+
+			if (password == "2678") {
+				inicio();
+			} else {
+				alert("Senha incorreta, digite novamente!");
+				login();
+			}
 		}
 
 		function inicio() {
-			switch(option){
+			alert(`Bem vindo ao Hotel ${hotelName},  ${username} É um imenso prazer ter você por aqui!`);
+			option = parseInt(prompt("Escolha uma opção: 1- Reservar quarto | 2- Cadastrar Hóspedes | 3- Abastecer Carro | 4- Sair"));
+			switch (option) {
 				case 1:
 					reserva_quartos();
-				case 2 :
+				case 2:
 					cadastro_hospedes();
 				case 3:
 					abastecer_carros();
@@ -31,17 +43,46 @@
 		}
 
 		function reserva_quartos() {
-			alert('HOTEL {NOME DO HOTEL} - RESERVA DE QUARTOS');
+			alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
+			valorDiaria = parseFloat(prompt("Digite o valor da diária do hotel: "));
+
+
+			if (valorDiaria <= 0 || valorDiaria == isNaN) {
+				alert("Valor inválido!!!");
+				inicio();
+			} else {
+				diaria = parseFloat(prompt("Digite a quantidade de dias que ficará no hotel: "));
+				if (diaria <= 0 || diaria > 30 || diaria == isNaN) {
+					alert("Informe um valor Valido");
+					inicio();
+				} else {
+					valorTotal = valorDiaria * diaria;
+
+					alert(`O valor total do pacote de ${diaria} dias de hospedagem é igual a R$ ${valorTotal}`);
+				}
+			}
+
+			nomeHospede = prompt("Digite o nome do hóspede: ");
+			confirma = prompt(`Deseja confirmar a reserva do ${nomeHospede} de ${diaria} dias, por R$ ${valorTotal}? (S - Sim | N - Não)`);
+
+			if (confirma === "S" || confirma === "s") {
+				alert(`Reserva para ${nomeHospede} realizada !`);
+			} else if (confirma === "N" || confirma === "n") {
+				alert(`Reserva não realizada!`);
+			} else {
+				alert("Selecione uma opção válida!");
+			}
+
 			inicio();
 		}
 
 		function cadastro_hospedes() {
-			alert('HOTEL {NOME DO HOTEL} - CADASTRO DE HÓSPEDES');
+			alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
 			inicio();
 		}
 
 		function abastecer_carros() {
-			alert('HOTEL {NOME DO HOTEL} - ABASTECER');
+			alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
 			inicio();
 		}
 
@@ -51,11 +92,14 @@
 		}
 
 		function sair() {
-			var confirma = confirm('Você deseja sair?');
-			if (confirma) {
-				window.close();
-			} else {
-				inicio();
+			var confirmaSaida = confirm('Você deseja sair?');
+			switch (confirmaSaida) {
+				case 1:
+					alert(`Muito obrigado e até logo, ${username}`);
+					window.close();
+					break;
+				default:
+					inicio();
 			}
 		}
 
