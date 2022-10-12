@@ -113,9 +113,9 @@
 						console.log(lista_hospedes); // O console é usado apenas para exibir ao desenvolvedor todo mundo que já está cadastrado.
 						alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso!\n");
 					}
-
+                }
 					sistema_cadastrar_hospedes();
-				}
+				
 			}
 
 			function pesquisar_hospedes() {
@@ -160,4 +160,3 @@
 					inicio();
 			}
 		}
-
