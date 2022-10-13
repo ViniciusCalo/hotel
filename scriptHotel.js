@@ -26,18 +26,28 @@ function login() {
 //HOME DO HOTEL
 function inicio() {
 	alert(`Bem vindo ao Hotel ${hotelName},  ${username} É um imenso prazer ter você por aqui!`);
-	option = parseInt(prompt("Escolha uma opção: 1- Reservar quarto | 2- Cadastrar Hóspedes | 3- Abastecer Carro | 4- Sair"));
+	option = parseInt(prompt("Escolha uma opção: 1- Reservar quarto | 2- Cadastrar Hóspedes | 3- Abastecer Carro | 4- Registrar Evento | 5- Buffet | 6- Sair"));
 
 	//OPÇÕES
 	switch (option) {
 		case 1:
 			reserva_quartos();
+			break;
 		case 2:
 			cadastro_hospedes();
+			break;
 		case 3:
 			abastecer_carros();
+			break;
 		case 4:
+			eventos();
+			break;
+		case 5:
+			buffet();
+			break;
+		case 6:
 			sair();
+
 	}
 }
 //RESERVA DE QUARTOS
@@ -104,10 +114,9 @@ function cadastro_hospedes() {
 
 	function cadastrar_hospedes() {
 		valorDiaria = parseFloat(prompt("Digite o valor padrão da diária!"));
-		var free = 0;
-		var meia = 0;
-		var hospedes = 0;
-
+		gratuidade = 0;
+		meia = 0;
+		valorTotal_hosp = 0;
 		if (valorDiaria <= 0 || valorDiaria == isNaN) {
 			alert("Digite um valor válido!!!");
 			sistema_cadastrar_hospedes();
@@ -119,34 +128,40 @@ function cadastro_hospedes() {
 			// lenght é uma propriedade que retorna a quantidade de itens dentro do array. 
 			if (lista_hospedes.length >= 15) {
 				alert("Numero máximo de hóspedes cadastrados.");
+
 			} else {
 				nome_hospede = prompt('Por favor, informe o nome da(o) hóspede:');
 				idade_hospede = parseInt(prompt("Digite a idade do hospede: "));
 
 				if (idade_hospede < 6) {
 					alert(`${nome_hospede}, possui gratuidade`);
-					free++;
+					gratuidade++;
 				} else if (idade_hospede >= 60) {
 					alert(`${nome_hospede}, paga meia!`);
 					meia++;
+					valorTotal_hosp += valorDiaria / 2;
+				} else {
+					valorTotal_hosp += valorDiaria;
 				}
 				// O método push() permite adicionar um item ao Array/Vetor. Importante dizer que ele adiciona o elemento ao final do Array/Vetor. 
 				lista_hospedes.push(nome_hospede);
 				console.log(lista_hospedes); // O console é usado apenas para exibir ao desenvolvedor todo mundo que já está cadastrado.
 				alert("Sucesso! Hóspede " + nome_hospede + " foi cadastrada(o) com sucesso!\n");
-			function sequencia() {
-				continuar = prompt("Deseja cadastrar mais um hospede? digite uma das opções(SIM | PARE)");
-				if (continuar === "SIM" || continuar === "sim") {
-					registraHospedes();
-				} else if (continuar === "PARE" || continuar==="pare"){
-					sistema_cadastrar_hospedes();
-				} else {
-					alert("Escolha uma opção valida!!");
-					sequencia();
-				}
+				sequencia();
 			}
 		}
-	}
+		function sequencia() {
+			continuar = prompt("Deseja cadastrar mais um hospede? digite uma das opções(SIM | PARE)");
+			if (continuar === "SIM" || continuar === "sim") {
+				registraHospedes();
+			} else if (continuar === "PARE" || continuar === "pare") {
+				alert(`${username}, o valor total das hospedagens é: R$ ${valorTotal_hosp}, ${gratuidade} gratuidade(s); ${meia} meia(s)`);
+				sistema_cadastrar_hospedes();
+			} else {
+				alert("Escolha uma opção valida!!");
+				sequencia();
+			}
+		}
 
 		sistema_cadastrar_hospedes();
 
@@ -161,7 +176,7 @@ function cadastro_hospedes() {
 			alert(nome_hospede + ' não foi encontrada(o).')
 		}
 
-		sistema_cadastrar_hospedes()
+		sistema_cadastrar_hospedes();
 	}
 
 	function erro_pesquisar_hospedes() {
@@ -172,7 +187,60 @@ function cadastro_hospedes() {
 	sistema_cadastrar_hospedes();
 	inicio();
 }
+function eventos() {
+	horaEvento = parseInt(prompt("Qual a duração do evento?"));
+	totalGarcom = parseInt(prompt("Quantos garçons serão necessário para o evento?"));
+	valorEvento = totalGarcom * horaEvento * 10.50;
+	alert(`Custo Total: R$ ${valorEvento}`);
 
+	confirmaEvento = prompt("Gostaria de confirmar a reserva? (S | N)");
+
+	if (confirmaEvento === "S" || confirmaEvento === "s") {
+		alert(`${username}, reserva efetuada com sucesso!`);
+		inicio();
+	} else if (confirmaEvento === "N" || confirmaEvento === "n") {
+		alert("Reserva cancelada!!!");
+		inicio();
+	} else {
+		alert("Digite uma opção válida!!");
+		eventos();
+	}
+
+}
+
+function buffet() {
+	const convidados = parseInt(prompt("Qual o numero de convidados do evento?"));
+	cafe = convidados * 0.80;
+	agua = convidados * 0.40;
+	quantCafe = convidados * 0.2;
+	quantAgua = convidados * 0.5;
+	quantSalgados = convidados * 7;
+	salgados = (quantSalgados / 100) * 34;
+	buffetTotal = cafe + agua + salgados;
+
+	if (convidados > 350) {
+		alert("Quantidade de convidados superior à capacidade máxima.");
+		inicio();
+	} else if (convidados > 0 && convidados <= 350) {
+		alert(`O evento precisará de ${quantCafe} litros de café, ${quantAgua} litros de água, ${quantSalgados} salgados. O custo total do evento será de R$ ${buffetTotal}`);
+		confirmaBuffet = prompt("Gostaria de confirmar a reserva? (S | N)");
+		if (confirmaBuffet === "S" || confirmaBuffet === "s") {
+			alert(`${username}, reserva efetuada com sucesso!!`);
+			inicio();
+		} else if (confirmaBuffet === "N" || confirmaBuffet === "n") {
+			alert("Reserva não efetuada!");
+			inicio();
+		} else {
+			alert("Selecione uma opção válida!");
+			buffet();
+		}
+		auditorio();
+	}
+}
+
+function auditorio() {
+	convidados
+}
 function abastecer_carros() {
 	alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
 	inicio();
