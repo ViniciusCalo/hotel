@@ -46,7 +46,7 @@ function inicio() {
 			buffet();
 			break;
 		case 6:
-			restaurante();
+			restauranteEvento();
 			break;
 		case 7:
 			sair();
@@ -246,7 +246,7 @@ function buffet() {
 
 	function auditorio() {
 
-		confirmaConvidado = prompt(`Você confirma que número de convidados é ${convidados}?`);
+		confirmaConvidado = prompt(`Você confirma que número de convidados é ${convidados} (S | N)?`);
 		if (confirmaConvidado === "S" || confirmaConvidado === "s") {
 			recomendaAuditorio();
 		} else if (confirmaAuditorio === "N" || confirmaAuditorio === "n") {
@@ -284,11 +284,9 @@ function buffet() {
 
 	}
 
-	function restaurante() {
-
-		diaEvento = prompt("Qual o dia do evento? domingo, segunda, terca, quarta, quinta, sexta, sabado.");
-
-		switch (diaEvento) {
+	function restauranteEvento() {
+		 diaEvento = prompt("Qual o dia do seu evento? Domingo, Segunda, Terca, Quarta, Quinta, Sexta, Sabado.");
+		switch (diaEvento.toLowerCase()) {
 			case "domingo":
 				domingo();
 				break;
@@ -311,161 +309,153 @@ function buffet() {
 				sabado();
 				break;
 			default:
-				erroRestaurante();
+				erro2();
 				break;
 		}
-
 		function segunda() {
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
-
-			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
+			if (horaEvento >= 7 && horaEvento <= 23) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
 				inicio();
 			}
 			else {
-				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				alert("Restaurante indisponível. Horário de funcionamento de Seg. à Sexta: 7h às 23h.");
 				inicio();
 			}
 		}
 
 		function terca() {
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
 
-			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+			if (horaEvento >= 7 && horaEvento <= 23) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
 				inicio();
 			}
 			else {
-				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				alert("Restaurante indisponível. Horário de funcionamento de Seg. à Sexta: 7h às 23h.");
+				inicio();
+			}
+		}
+		function quarta() {
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
+
+			if (horaEvento >= 7 && horaEvento <= 23) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. Horário de funcionamento de Seg. à Sexta: 7h às 23h.");
 				inicio();
 			}
 		}
 
 		function quarta() {
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
-
-			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
+			if (horaEvento >= 7 && horaEvento <= 23) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
 				inicio();
 			}
 			else {
-				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				alert("Restaurante indisponível. Horário de funcionamento de Seg. à Sexta: 7h às 23h.");
 				inicio();
 			}
 		}
-
-		function quarta() {
-
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
-			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
-				inicio();
-			}
-			else {
-				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
-				inicio();
-			}
-		}
-
 		function quinta() {
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
-
-			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
+			if (horaEvento >= 7 && horaEvento <= 23) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
 				inicio();
 			}
 			else {
-				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				alert("Restaurante indisponível. Horário de funcionamento de Seg. à Sexta: 7h às 23h.");
 				inicio();
 			}
 		}
 
 		function sexta() {
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
 
-			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+			if (horaEvento >= 7 && horaEvento <= 23) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
 				inicio();
 			}
 			else {
-				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				alert("Restaurante indisponível. Horário de funcionamento de Seg. à Sexta: 7h às 23h.");
 				inicio();
 			}
 		}
 
 		function sabado() {
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
-
-			if (horaDoEvento >= 7 && horaDoEvento <= 15) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
+			if (horaEvento >= 7 && horaEvento <= 15) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
 				inicio();
 			}
 			else {
-				alert("Restaurante indisponível. Horário de funcionamento é de Sábado das 7h às 15h.");
+				alert("Restaurante indisponível. Horário de funcionamento de Sábado: 7h às 15h.");
 				inicio();
 			}
 		}
 
 		function domingo() {
-			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
-
-			if (horaDoEvento >= 7 && horaDoEvento <= 15) {
-				empresa = prompt("Informe o nome da empresa: ");
-				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+			 horaEvento = parseInt(prompt("Qual a hora do seu evento?"));
+			if (horaEvento >= 7 && horaEvento <= 15) {
+				 nomeEmpresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${nomeEmpresa}, ${diaEvento} às ${horaEvento}h.`);
 				inicio();
 			}
 			else {
-				alert("Restaurante indisponível. Horário de funcionamento é de Domingo das 7h às 15h.");
+				alert("Restaurante indisponível. Horário de funcionamento de Domingo: 7h às 15h.");
 				inicio();
 			}
 		}
 
-	}
 
-	function reservaHotel() {
+		function reservaHotel() {
 
-		reservaEvento = prompt("Gostaria de efetuar a reserva? S/N");
+			reservaEvento = prompt("Gostaria de efetuar a reserva? S/N");
 
-		if (reservaEvento === "S") {
-			alert(`${username}, reserva efetuada com sucesso.`);
-			inicio();
-		}
-		else if (reservaEvento === "N") {
-			alert(`${username}, reserva não efetuada.`);
-			inicio();
-		}
-		else {
-			alert("Digite uma opção válida !!!");
-			restaurante();
-		}
-
-	}
-	function abastecer_carros() {
-		alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
-		inicio();
-	}
-
-	function erro() {
-		alert('Por favor, informe um número entre 1 e 4');
-		inicio();
-	}
-
-	function sair() {
-		confirmaSaida = confirm('Você deseja sair?');
-		switch (confirmaSaida) {
-			case 1:
-				alert(`Muito obrigado e até logo, ${username}`);
-				window.close();
-				break;
-			default:
+			if (reservaEvento === "S") {
+				alert(`${username}, reserva efetuada com sucesso.`);
 				inicio();
+			}
+			else if (reservaEvento === "N") {
+				alert(`${username}, reserva não efetuada.`);
+				inicio();
+			}
+			else {
+				alert("Digite uma opção válida !!!");
+				restaurante();
+			}
+
+		}
+		function abastecer_carros() {
+			alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
+			inicio();
+		}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 4');
+			inicio();
+		}
+
+		function sair() {
+			confirmaSaida = confirm('Você deseja sair?');
+			switch (confirmaSaida) {
+				case 1:
+					alert(`Muito obrigado e até logo, ${username}`);
+					window.close();
+					break;
+				default:
+					inicio();
+			}
 		}
 	}
 }
