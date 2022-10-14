@@ -1,4 +1,4 @@
-//VARIAVEIS VAZIAS
+//IAVEIS VAZIAS
 hotelName = "";
 username = "";
 //DEFININDO O NOME DO HOTEL
@@ -7,7 +7,7 @@ function welcome() {
 	hotelName = prompt("Digite o nome do Hotel?!");
 
 	alert(`O nome do Hotel é ${hotelName}`);
-	username = prompt("Digite seu nome: ");
+	username = prompt("Digite nome: ");
 	login();
 
 }
@@ -26,7 +26,7 @@ function login() {
 //HOME DO HOTEL
 function inicio() {
 	alert(`Bem vindo ao Hotel ${hotelName},  ${username} É um imenso prazer ter você por aqui!`);
-	option = parseInt(prompt("Escolha uma opção: 1- Reservar quarto | 2- Cadastrar Hóspedes | 3- Abastecer Carro | 4- Registrar Evento | 5- Buffet | 6- Sair"));
+	option = parseInt(prompt("Escolha uma opção: 1- Reser quarto | 2- Cadastrar Hóspedes | 3- Abastecer Carro | 4- Registrar Evento | 5- Buffet | 6- Restaurante | 7- sair"));
 
 	//OPÇÕES
 	switch (option) {
@@ -46,7 +46,13 @@ function inicio() {
 			buffet();
 			break;
 		case 6:
+			restaurante();
+			break;
+		case 7:
 			sair();
+			break;
+		default:
+			erro();
 
 	}
 }
@@ -91,11 +97,11 @@ function reserva_quartos() {
 
 function cadastro_hospedes() {
 	alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
-	var lista_hospedes = [];
+	lista_hospedes = [];
 
 	function sistema_cadastrar_hospedes() {
 
-		var escolha_hospedes = parseInt(prompt('Cadastro de Hóspedes\n\n Selecione uma opção: \n1. Cadastrar \n2. Pesquisar \n3. Sair'));
+		escolha_hospedes = parseInt(prompt('Cadastro de Hóspedes\n\n Selecione uma opção: \n1. Cadastrar \n2. Pesquisar \n3. Sair'));
 
 		switch (escolha_hospedes) {
 			case 1:
@@ -169,7 +175,7 @@ function cadastro_hospedes() {
 	}
 
 	function pesquisar_hospedes() {
-		var nome_hospede = prompt('Por favor, informe o nome da(o) hóspede para pesquisa:');
+		nome_hospede = prompt('Por favor, informe o nome da(o) hóspede para pesquisa:');
 		// O método includes() procura por um elemento dentro do Array e retorna verdadeiro ou falso. Caso queira comparar números, o mais indicado é o método find();
 		if (lista_hospedes.includes(nome_hospede)) {
 			alert(nome_hospede + ' encontrada(o).')
@@ -239,21 +245,8 @@ function buffet() {
 	}
 
 	function auditorio() {
-		// confirmaConvidado = parseInt(prompt(`${username}, confirme o número de convidados para reservar um salão adequado: `));
-	
-		// if (confirmaConvidado > 350 || confirmaConvidado < 0) {
-		// 	alert(`${username}, Número de convidades inválido`);
-		// }
-		// else if (confirmaConvidado > 0 && confirmaConvidado <= 220) {
-		// 	cadAdd = confirmaConvidado - 150;
-		// 	alert(`${username}, use o auditório Laranja (inclua mais ${cadAdd})`);
-		// 	reservar_hotel();
-		// }
-		// else if (confirmaConvidado > 220 && confirmaConvidado <= 350) {
-		// 	alert(`${username}, use o auditório Colorado`);
-		// 	reservar_hotel();
-		// }
-		confirmaConvidado = prompt(`Você confirma que seu número de convidados é ${convidados}?`);
+
+		confirmaConvidado = prompt(`Você confirma que número de convidados é ${convidados}?`);
 		if (confirmaConvidado === "S" || confirmaConvidado === "s") {
 			recomendaAuditorio();
 		} else if (confirmaAuditorio === "N" || confirmaAuditorio === "n") {
@@ -272,7 +265,7 @@ function buffet() {
 					alert(`Use o auditório laranja e não foi necessário cadeiras extras!`)
 				} else if (cadAdd <= 70) {
 					alert(`Use o auditório laranja! (inclue mais ${cadAdd} de cadeiras adicionais)`);
-				} 
+				}
 			} else if (convidados > 220 || convidados <= 350) {
 				alert(`Use o auditório Colorado!! Não há espaço para cadeiras adicionais`);
 			}
@@ -288,10 +281,172 @@ function buffet() {
 				auditorio();
 			}
 		}
-	
-}
 
+	}
 
+	function restaurante() {
+
+		diaEvento = prompt("Qual o dia do evento? domingo, segunda, terca, quarta, quinta, sexta, sabado.");
+
+		switch (diaEvento) {
+			case "domingo":
+				domingo();
+				break;
+			case "segunda":
+				segunda();
+				break;
+			case "terca":
+				terca();
+				break;
+			case "quarta":
+				quarta();
+				break;
+			case "quinta":
+				quinta();
+				break;
+			case "sexta":
+				sexta();
+				break;
+			case "sabado":
+				sabado();
+				break;
+			default:
+				erroRestaurante();
+				break;
+		}
+
+		function segunda() {
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+
+			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				inicio();
+			}
+		}
+
+		function terca() {
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+
+			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				inicio();
+			}
+		}
+
+		function quarta() {
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+
+			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				inicio();
+			}
+		}
+
+		function quarta() {
+
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				inicio();
+			}
+		}
+
+		function quinta() {
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+
+			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				inicio();
+			}
+		}
+
+		function sexta() {
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+
+			if (horaDoEvento >= 7 && horaDoEvento <= 23) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. O horário de funcionamento é Seg. à Sexta das 7h às 23h.");
+				inicio();
+			}
+		}
+
+		function sabado() {
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+
+			if (horaDoEvento >= 7 && horaDoEvento <= 15) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. Horário de funcionamento é de Sábado das 7h às 15h.");
+				inicio();
+			}
+		}
+
+		function domingo() {
+			horaDoEvento = parseInt(prompt("Qual a hora do evento?"));
+
+			if (horaDoEvento >= 7 && horaDoEvento <= 15) {
+				empresa = prompt("Informe o nome da empresa: ");
+				alert(`Restaurante reservado para ${empresa}, ${diaEvento} às ${horaDoEvento}h.`);
+				inicio();
+			}
+			else {
+				alert("Restaurante indisponível. Horário de funcionamento é de Domingo das 7h às 15h.");
+				inicio();
+			}
+		}
+
+	}
+
+	function reservaHotel() {
+
+		reservaEvento = prompt("Gostaria de efetuar a reserva? S/N");
+
+		if (reservaEvento === "S") {
+			alert(`${username}, reserva efetuada com sucesso.`);
+			inicio();
+		}
+		else if (reservaEvento === "N") {
+			alert(`${username}, reserva não efetuada.`);
+			inicio();
+		}
+		else {
+			alert("Digite uma opção válida !!!");
+			restaurante();
+		}
+
+	}
 	function abastecer_carros() {
 		alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
 		inicio();
@@ -303,7 +458,7 @@ function buffet() {
 	}
 
 	function sair() {
-		var confirmaSaida = confirm('Você deseja sair?');
+		confirmaSaida = confirm('Você deseja sair?');
 		switch (confirmaSaida) {
 			case 1:
 				alert(`Muito obrigado e até logo, ${username}`);
