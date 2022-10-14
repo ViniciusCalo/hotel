@@ -83,6 +83,7 @@ function reserva_quartos() {
 		alert(`Reserva não realizada!`);
 	} else {
 		alert("Selecione uma opção válida!");
+		reserva_quartos();
 	}
 
 	inicio();
@@ -226,7 +227,7 @@ function buffet() {
 		confirmaBuffet = prompt("Gostaria de confirmar a reserva? (S | N)");
 		if (confirmaBuffet === "S" || confirmaBuffet === "s") {
 			alert(`${username}, reserva efetuada com sucesso!!`);
-			inicio();
+			auditorio();
 		} else if (confirmaBuffet === "N" || confirmaBuffet === "n") {
 			alert("Reserva não efetuada!");
 			inicio();
@@ -236,29 +237,80 @@ function buffet() {
 		}
 		auditorio();
 	}
+
+	function auditorio() {
+		// confirmaConvidado = parseInt(prompt(`${username}, confirme o número de convidados para reservar um salão adequado: `));
+	
+		// if (confirmaConvidado > 350 || confirmaConvidado < 0) {
+		// 	alert(`${username}, Número de convidades inválido`);
+		// }
+		// else if (confirmaConvidado > 0 && confirmaConvidado <= 220) {
+		// 	cadAdd = confirmaConvidado - 150;
+		// 	alert(`${username}, use o auditório Laranja (inclua mais ${cadAdd})`);
+		// 	reservar_hotel();
+		// }
+		// else if (confirmaConvidado > 220 && confirmaConvidado <= 350) {
+		// 	alert(`${username}, use o auditório Colorado`);
+		// 	reservar_hotel();
+		// }
+		confirmaConvidado = prompt(`Você confirma que seu número de convidados é ${convidados}?`);
+		if (confirmaConvidado === "S" || confirmaConvidado === "s") {
+			recomendaAuditorio();
+		} else if (confirmaAuditorio === "N" || confirmaAuditorio === "n") {
+			alert("Reserva cancelada!");
+			buffet();
+		} else {
+			alert("Selecione uma opção válida!");
+			auditorio();
+		}
+		function recomendaAuditorio() {
+			if (convidados > 350 || convidados <= 0) {
+				alert("Quantidade de convidados superior a capacidade máxima !!!");
+			} else if (convidados > 0 || convidados < 220) {
+				cadAdd = convidados - 150;
+				if (cadAdd <= 0) {
+					alert(`Use o auditório laranja e não foi necessário cadeiras extras!`)
+				} else if (cadAdd <= 70) {
+					alert(`Use o auditório laranja! (inclue mais ${cadAdd} de cadeiras adicionais)`);
+				} 
+			} else if (convidados > 220 || convidados <= 350) {
+				alert(`Use o auditório Colorado!! Não há espaço para cadeiras adicionais`);
+			}
+			confirmaAuditorio = prompt("Gostaria de confirmar a reserva? (S | N)");
+			if (confirmaAuditorio === "S" || confirmaAuditorio === "s") {
+				alert(`${username}, reserva efetuada com sucesso!!`);
+				inicio();
+			} else if (confirmaAuditorio === "N" || confirmaAuditorio === "n") {
+				alert("Reserva não efetuada!");
+				inicio();
+			} else {
+				alert("Selecione uma opção válida!");
+				auditorio();
+			}
+		}
+	
 }
 
-function auditorio() {
-	convidados
-}
-function abastecer_carros() {
-	alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
-	inicio();
-}
 
-function erro() {
-	alert('Por favor, informe um número entre 1 e 4');
-	inicio();
-}
+	function abastecer_carros() {
+		alert(`Bem vindo ao Hotel ${hotelName}, ${username}.É um imenso prazer ter você aqui!`);
+		inicio();
+	}
 
-function sair() {
-	var confirmaSaida = confirm('Você deseja sair?');
-	switch (confirmaSaida) {
-		case 1:
-			alert(`Muito obrigado e até logo, ${username}`);
-			window.close();
-			break;
-		default:
-			inicio();
+	function erro() {
+		alert('Por favor, informe um número entre 1 e 4');
+		inicio();
+	}
+
+	function sair() {
+		var confirmaSaida = confirm('Você deseja sair?');
+		switch (confirmaSaida) {
+			case 1:
+				alert(`Muito obrigado e até logo, ${username}`);
+				window.close();
+				break;
+			default:
+				inicio();
+		}
 	}
 }
